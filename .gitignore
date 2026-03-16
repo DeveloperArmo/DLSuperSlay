@@ -36,14 +36,12 @@ tensorboard/
 runs/
 
 # Data files
-*.csv
 *.tsv
 *.dat
 *.json
 *.xml
 *.parquet
 data/
-datasets/
 raw_data/
 processed_data/
 *.npy
