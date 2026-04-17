@@ -68,3 +68,5 @@ processed_data/
 
 # Logs
 *.log
+
+.venv/
