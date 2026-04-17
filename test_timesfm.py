@@ -1,20 +1,20 @@
 import timesfm
 import numpy as np
 
-print("Loading TimesFM (first run downloads ~800MB checkpoint)...")
+print("Loading TimesFM...")
 
 tfm = timesfm.TimesFm(
     hparams=timesfm.TimesFmHparams(
         backend="cpu",
-        horizon_len=30,
-        context_len=120,
+        per_core_batch_size=32,
+        horizon_len=60,
     ),
     checkpoint=timesfm.TimesFmCheckpoint(
         huggingface_repo_id="google/timesfm-1.0-200m-pytorch"
     ),
 )
 
-print("Model loaded. Running dummy forecast...")
+print("Model loaded. Running dummy forecast with context=120 (Filipp's filtering window size)...")
 dummy = np.sin(np.linspace(0, 20, 120))
 forecast, _ = tfm.forecast([dummy], freq=[0])
 
