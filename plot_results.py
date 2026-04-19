@@ -28,9 +28,13 @@ CONFIGS = [
     ("Fine-tuned+HP", "TimesFM_SSMI_FineTuned_HP_Metrics.npz"),
 ]
 
-HP_LABEL = "HP"
-HP_COLOR = "#2ca02c"       # green
-DEFAULT_COLOR = "#1f77b4"  # blue
+PALETTE = [
+    "#1F77B4",  # MA
+    "#E15759",  # HP
+    "#2CA02C",  # Butterworth
+    "#9467BD",  # Kalman
+    "#D4A72C",  # Fine-tuned+HP
+]
 RAW_COLOR = "#d62728"      # red (raw zero-shot baseline)
 REF_COLOR = "#555555"      # grey (random-guess reference)
 
@@ -94,7 +98,7 @@ def make_plot(
 
     bp = ax.boxplot(data, showfliers=False, patch_artist=True, widths=0.6)
     for i, patch in enumerate(bp["boxes"]):
-        patch.set_facecolor(HP_COLOR if labels[i] == HP_LABEL else DEFAULT_COLOR)
+        patch.set_facecolor(PALETTE[i % len(PALETTE)])
         patch.set_alpha(0.75)
         patch.set_edgecolor("black")
     for element in ("whiskers", "caps", "medians"):
