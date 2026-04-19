@@ -1,0 +1,194 @@
+CPU threads: 10 | train windows: 200 | val windows: 47 | trainable/total: 4919040/203568960 (2.42%)
+epoch=1 split=train batch=0 loss=12773.906250 sec=0.26
+epoch=1 split=train batch=1 loss=41772.011719 sec=0.13
+epoch=1 split=train batch=2 loss=19160.376953 sec=0.13
+epoch=1 split=train batch=3 loss=51047.425781 sec=0.15
+epoch=1 split=train batch=4 loss=26333.759766 sec=0.13
+epoch=1 split=train batch=5 loss=71288.335938 sec=0.13
+epoch=1 split=train batch=6 loss=62696.640625 sec=0.13
+epoch=1 split=train batch=7 loss=23987.998047 sec=0.12
+epoch=1 split=train batch=8 loss=145254.500000 sec=0.13
+epoch=1 split=train batch=9 loss=26098.632812 sec=0.12
+timing avg_batch_sec=0.14 est_remaining_sec=20
+epoch=1 split=train batch=10 loss=22158.445312 sec=0.11
+epoch=1 split=train batch=11 loss=168494.843750 sec=0.10
+epoch=1 split=train batch=12 loss=35451.214844 sec=0.11
+epoch=1 split=train batch=13 loss=26278.142578 sec=0.11
+epoch=1 split=train batch=14 loss=17751.363281 sec=0.12
+epoch=1 split=train batch=15 loss=51104.292969 sec=0.12
+epoch=1 split=train batch=16 loss=185147.000000 sec=0.12
+epoch=1 split=train batch=17 loss=203830.671875 sec=0.09
+epoch=1 split=train batch=18 loss=132405.343750 sec=0.08
+epoch=1 split=train batch=19 loss=43158.457031 sec=0.10
+epoch=1 split=train batch=20 loss=46531.121094 sec=0.11
+epoch=1 split=train batch=21 loss=55509.214844 sec=0.11
+epoch=1 split=train batch=22 loss=33951.613281 sec=0.11
+epoch=1 split=train batch=23 loss=28850.556641 sec=0.09
+epoch=1 split=train batch=24 loss=30446.679688 sec=0.12
+epoch=1 split=train batch=25 loss=24986.833984 sec=0.11
+epoch=1 split=train batch=26 loss=47174.421875 sec=0.10
+epoch=1 split=train batch=27 loss=27619.458984 sec=0.11
+epoch=1 split=train batch=28 loss=19625.369141 sec=0.11
+epoch=1 split=train batch=29 loss=61306.128906 sec=0.11
+epoch=1 split=train batch=30 loss=152751.796875 sec=0.12
+epoch=1 split=train batch=31 loss=24276.701172 sec=0.11
+epoch=1 split=train batch=32 loss=14905.066406 sec=0.12
+epoch=1 split=train batch=33 loss=38333.082031 sec=0.13
+epoch=1 split=train batch=34 loss=55666.449219 sec=0.12
+epoch=1 split=train batch=35 loss=125416.000000 sec=0.09
+epoch=1 split=train batch=36 loss=90900.023438 sec=0.11
+epoch=1 split=train batch=37 loss=67386.429688 sec=0.10
+epoch=1 split=train batch=38 loss=19908.335938 sec=0.12
+epoch=1 split=train batch=39 loss=26149.867188 sec=0.11
+epoch=1 split=train batch=40 loss=46187.480469 sec=0.10
+epoch=1 split=train batch=41 loss=63177.417969 sec=0.11
+epoch=1 split=train batch=42 loss=12340.694336 sec=0.24
+epoch=1 split=train batch=43 loss=84312.000000 sec=0.13
+epoch=1 split=train batch=44 loss=59080.539062 sec=0.11
+epoch=1 split=train batch=45 loss=25664.552734 sec=0.11
+epoch=1 split=train batch=46 loss=13424.533203 sec=0.11
+epoch=1 split=train batch=47 loss=131435.531250 sec=0.12
+epoch=1 split=train batch=48 loss=70315.703125 sec=0.10
+epoch=1 split=train batch=49 loss=14141.252930 sec=0.12
+epoch=1 split=val batch=0 loss=76072.203125
+epoch=1 split=val batch=1 loss=82267.398438
+epoch=1 split=val batch=2 loss=134178.187500
+epoch=1 split=val batch=3 loss=37261.167969
+epoch=1 split=val batch=4 loss=49083.769531
+epoch=1 split=val batch=5 loss=72431.234375
+epoch=1 split=val batch=6 loss=52456.949219
+epoch=1 split=val batch=7 loss=39127.785156
+epoch=1 split=val batch=8 loss=17114.181641
+epoch=1 split=val batch=9 loss=565007.937500
+epoch=1 split=val batch=10 loss=116600.351562
+epoch=1 split=val batch=11 loss=148202.593750
+epoch=1 summary train=57559.364375 val=115816.979980
+epoch=1 new_best_val=115816.979980
+epoch=2 split=train batch=0 loss=18536.705078 sec=0.11
+epoch=2 split=train batch=1 loss=72146.773438 sec=0.12
+epoch=2 split=train batch=2 loss=33744.875000 sec=0.11
+epoch=2 split=train batch=3 loss=43786.671875 sec=0.13
+epoch=2 split=train batch=4 loss=20783.441406 sec=0.08
+epoch=2 split=train batch=5 loss=36612.144531 sec=0.10
+epoch=2 split=train batch=6 loss=34713.117188 sec=0.11
+epoch=2 split=train batch=7 loss=25889.789062 sec=0.13
+epoch=2 split=train batch=8 loss=14550.122070 sec=0.12
+epoch=2 split=train batch=9 loss=15246.231445 sec=0.12
+epoch=2 split=train batch=10 loss=21486.697266 sec=0.13
+epoch=2 split=train batch=11 loss=60933.140625 sec=0.14
+epoch=2 split=train batch=12 loss=95997.648438 sec=0.12
+epoch=2 split=train batch=13 loss=158158.453125 sec=0.12
+epoch=2 split=train batch=14 loss=47107.078125 sec=0.11
+epoch=2 split=train batch=15 loss=61083.753906 sec=0.11
+epoch=2 split=train batch=16 loss=27377.658203 sec=0.13
+epoch=2 split=train batch=17 loss=51663.632812 sec=0.14
+epoch=2 split=train batch=18 loss=25147.412109 sec=0.13
+epoch=2 split=train batch=19 loss=70046.835938 sec=0.12
+epoch=2 split=train batch=20 loss=169906.937500 sec=0.10
+epoch=2 split=train batch=21 loss=82137.570312 sec=0.08
+epoch=2 split=train batch=22 loss=14656.177734 sec=0.10
+epoch=2 split=train batch=23 loss=88843.109375 sec=0.09
+epoch=2 split=train batch=24 loss=24971.019531 sec=0.10
+epoch=2 split=train batch=25 loss=37621.871094 sec=0.09
+epoch=2 split=train batch=26 loss=29753.976562 sec=0.09
+epoch=2 split=train batch=27 loss=72724.289062 sec=0.08
+epoch=2 split=train batch=28 loss=85035.929688 sec=0.08
+epoch=2 split=train batch=29 loss=68706.125000 sec=0.08
+epoch=2 split=train batch=30 loss=81609.765625 sec=0.09
+epoch=2 split=train batch=31 loss=87955.898438 sec=0.11
+epoch=2 split=train batch=32 loss=25820.408203 sec=0.11
+epoch=2 split=train batch=33 loss=17063.408203 sec=0.10
+epoch=2 split=train batch=34 loss=14829.810547 sec=0.09
+epoch=2 split=train batch=35 loss=64423.046875 sec=0.09
+epoch=2 split=train batch=36 loss=159855.062500 sec=0.09
+epoch=2 split=train batch=37 loss=75646.953125 sec=0.09
+epoch=2 split=train batch=38 loss=144439.671875 sec=0.09
+epoch=2 split=train batch=39 loss=68481.781250 sec=0.09
+epoch=2 split=train batch=40 loss=19436.472656 sec=0.08
+epoch=2 split=train batch=41 loss=33217.503906 sec=0.11
+epoch=2 split=train batch=42 loss=22463.064453 sec=0.09
+epoch=2 split=train batch=43 loss=62407.800781 sec=0.08
+epoch=2 split=train batch=44 loss=13805.735352 sec=0.09
+epoch=2 split=train batch=45 loss=56914.636719 sec=0.08
+epoch=2 split=train batch=46 loss=35294.351562 sec=0.10
+epoch=2 split=train batch=47 loss=33756.757812 sec=0.12
+epoch=2 split=train batch=48 loss=8840.879883 sec=0.10
+epoch=2 split=train batch=49 loss=22391.300781 sec=0.09
+epoch=2 split=val batch=0 loss=92642.250000
+epoch=2 split=val batch=1 loss=74951.515625
+epoch=2 split=val batch=2 loss=128753.835938
+epoch=2 split=val batch=3 loss=39077.519531
+epoch=2 split=val batch=4 loss=42715.367188
+epoch=2 split=val batch=5 loss=71665.601562
+epoch=2 split=val batch=6 loss=49781.070312
+epoch=2 split=val batch=7 loss=35494.667969
+epoch=2 split=val batch=8 loss=18432.300781
+epoch=2 split=val batch=9 loss=571218.750000
+epoch=2 split=val batch=10 loss=87962.179688
+epoch=2 split=val batch=11 loss=131064.078125
+epoch=2 summary train=53160.469961 val=111979.928060
+epoch=2 new_best_val=111979.928060
+epoch=3 split=train batch=0 loss=5766.529297 sec=0.11
+epoch=3 split=train batch=1 loss=24573.392578 sec=0.10
+epoch=3 split=train batch=2 loss=30456.722656 sec=0.09
+epoch=3 split=train batch=3 loss=49987.207031 sec=0.09
+epoch=3 split=train batch=4 loss=35437.175781 sec=0.09
+epoch=3 split=train batch=5 loss=301829.781250 sec=0.09
+epoch=3 split=train batch=6 loss=52594.812500 sec=0.09
+epoch=3 split=train batch=7 loss=29234.470703 sec=0.09
+epoch=3 split=train batch=8 loss=33194.738281 sec=0.09
+epoch=3 split=train batch=9 loss=28191.587891 sec=0.08
+epoch=3 split=train batch=10 loss=46753.527344 sec=0.09
+epoch=3 split=train batch=11 loss=107528.703125 sec=0.12
+epoch=3 split=train batch=12 loss=18190.869141 sec=0.11
+epoch=3 split=train batch=13 loss=46009.148438 sec=0.13
+epoch=3 split=train batch=14 loss=22589.347656 sec=0.11
+epoch=3 split=train batch=15 loss=24220.929688 sec=0.09
+epoch=3 split=train batch=16 loss=39812.855469 sec=0.09
+epoch=3 split=train batch=17 loss=29603.714844 sec=0.12
+epoch=3 split=train batch=18 loss=63737.351562 sec=0.10
+epoch=3 split=train batch=19 loss=15872.051758 sec=0.09
+epoch=3 split=train batch=20 loss=16220.759766 sec=0.10
+epoch=3 split=train batch=21 loss=100939.757812 sec=0.10
+epoch=3 split=train batch=22 loss=37838.554688 sec=0.09
+epoch=3 split=train batch=23 loss=14170.543945 sec=0.10
+epoch=3 split=train batch=24 loss=69308.835938 sec=0.09
+epoch=3 split=train batch=25 loss=72559.375000 sec=0.08
+epoch=3 split=train batch=26 loss=148132.312500 sec=0.08
+epoch=3 split=train batch=27 loss=28101.757812 sec=0.09
+epoch=3 split=train batch=28 loss=136023.015625 sec=0.09
+epoch=3 split=train batch=29 loss=80056.546875 sec=0.09
+epoch=3 split=train batch=30 loss=14129.948242 sec=0.09
+epoch=3 split=train batch=31 loss=24480.316406 sec=0.10
+epoch=3 split=train batch=32 loss=65037.285156 sec=0.11
+epoch=3 split=train batch=33 loss=37274.390625 sec=0.11
+epoch=3 split=train batch=34 loss=37792.789062 sec=0.13
+epoch=3 split=train batch=35 loss=41297.261719 sec=0.11
+epoch=3 split=train batch=36 loss=7418.614258 sec=0.08
+epoch=3 split=train batch=37 loss=46512.496094 sec=0.08
+epoch=3 split=train batch=38 loss=91887.226562 sec=0.09
+epoch=3 split=train batch=39 loss=17820.466797 sec=0.09
+epoch=3 split=train batch=40 loss=16169.170898 sec=0.12
+epoch=3 split=train batch=41 loss=20556.855469 sec=0.13
+epoch=3 split=train batch=42 loss=31816.570312 sec=0.13
+epoch=3 split=train batch=43 loss=51066.519531 sec=0.14
+epoch=3 split=train batch=44 loss=27306.193359 sec=0.13
+epoch=3 split=train batch=45 loss=59494.484375 sec=0.10
+epoch=3 split=train batch=46 loss=24995.611328 sec=0.08
+epoch=3 split=train batch=47 loss=47819.886719 sec=0.10
+epoch=3 split=train batch=48 loss=35217.390625 sec=0.13
+epoch=3 split=train batch=49 loss=49208.011719 sec=0.14
+epoch=3 split=val batch=0 loss=87647.507812
+epoch=3 split=val batch=1 loss=85090.898438
+epoch=3 split=val batch=2 loss=123205.382812
+epoch=3 split=val batch=3 loss=40182.339844
+epoch=3 split=val batch=4 loss=41164.445312
+epoch=3 split=val batch=5 loss=72281.515625
+epoch=3 split=val batch=6 loss=50834.390625
+epoch=3 split=val batch=7 loss=35998.992188
+epoch=3 split=val batch=8 loss=20338.291016
+epoch=3 split=val batch=9 loss=576253.000000
+epoch=3 split=val batch=10 loss=83090.570312
+epoch=3 split=val batch=11 loss=125763.546875
+epoch=3 summary train=49124.757324 val=111820.906738
+epoch=3 new_best_val=111820.906738
