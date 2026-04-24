@@ -1,0 +1,5 @@
+metric,filter,config_id,config,metric_value
+rmse,Moving Average,2,{'window': 30},122.45408885141693
+mape,Moving Average,1,{'window': 10},1.6595707567881917
+pearson_r2,Butterworth,1,"{'cutoff': 0.05, 'order': 2}",0.3398767983854096
+directional_accuracy,HP Filter,3,{'lambda': 10000},50.49531459170014

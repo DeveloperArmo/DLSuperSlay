@@ -1,0 +1,17 @@
+filter,metric,best_config_id,best_config,metric_value
+Butterworth,rmse,3,"{'cutoff': 0.2, 'order': 2}",131.40106594446243
+Butterworth,mape,3,"{'cutoff': 0.2, 'order': 2}",1.7689275788132022
+Butterworth,pearson_r2,1,"{'cutoff': 0.05, 'order': 2}",0.3398767983854096
+Butterworth,directional_accuracy,1,"{'cutoff': 0.05, 'order': 2}",50.01338688085676
+HP Filter,rmse,3,{'lambda': 10000},138.96156676755976
+HP Filter,mape,1,{'lambda': 100},1.7764425710528604
+HP Filter,pearson_r2,2,{'lambda': 1600},0.3283457797968129
+HP Filter,directional_accuracy,3,{'lambda': 10000},50.49531459170014
+Kalman Filter,rmse,2,{'process_noise': 0.01},124.74100250353344
+Kalman Filter,mape,1,{'process_noise': 0.001},1.6659982878600679
+Kalman Filter,pearson_r2,1,{'process_noise': 0.001},0.24598535466930227
+Kalman Filter,directional_accuracy,1,{'process_noise': 0.001},50.09370816599732
+Moving Average,rmse,2,{'window': 30},122.45408885141693
+Moving Average,mape,1,{'window': 10},1.6595707567881917
+Moving Average,pearson_r2,3,{'window': 60},0.3039800795348405
+Moving Average,directional_accuracy,2,{'window': 30},49.18340026773762
