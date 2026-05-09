@@ -1,13 +1,13 @@
 """Fine-tune TWO Chronos models (low-pass / high-pass) on trimmed SSMI.
 
+Decomposition: Moving Average (window=30), consistent with ChronosBase_Filtering.ipynb.
+  low  = MA(y, 30)   → trend
+  high = y - low     → residual / noise
+
 Train range: 2001-10-01 -> 2017-12-31 (from trimmed SSMI)
 Saves checkpoints next to this script:
   - chronos_ssmi_low_v1.pt
   - chronos_ssmi_high_v1.pt
-
-Notes:
-- Uses Chronos tokenizer transforms directly, so training labels are in Chronos token space.
-- Keeps pipeline/settings close to existing TimesFM decomposed setup.
 """
 from __future__ import annotations
 
@@ -18,7 +18,6 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import torch
-from statsmodels.tsa.filters.hp_filter import hpfilter
 from torch.utils.data import DataLoader, Dataset
 
 from chronos import ChronosPipeline
@@ -41,7 +40,7 @@ WEIGHT_DECAY = 0.01
 MAX_EPOCHS = 3
 SEED = 42
 VAL_FRACTION = 0.10
-HP_LAMBDA = 129600
+MA_WINDOW = 30
 
 CHECKPOINT_LOW = SCRIPT_DIR / "chronos_ssmi_low_v1.pt"
 CHECKPOINT_HIGH = SCRIPT_DIR / "chronos_ssmi_high_v1.pt"
@@ -103,9 +102,10 @@ def load_train_series() -> np.ndarray:
     return y
 
 
-def hp_decompose_full(series: np.ndarray, lamb: float = HP_LAMBDA):
-    cycle, trend = hpfilter(series, lamb=lamb)
-    return np.asarray(trend, dtype=np.float32), np.asarray(cycle, dtype=np.float32)
+def ma_decompose(series: np.ndarray, window: int = MA_WINDOW):
+    low = np.convolve(series, np.ones(window) / window, mode="same").astype(np.float32)
+    high = (series - low).astype(np.float32)
+    return low, high
 
 
 def build_batch_tokens(tokenizer, ctx: torch.Tensor, tgt: torch.Tensor, device: torch.device):
@@ -225,7 +225,8 @@ def main() -> None:
     print(f"High checkpoint: {CHECKPOINT_HIGH}")
 
     y = load_train_series()
-    train_low, train_high = hp_decompose_full(y)
+    train_low, train_high = ma_decompose(y)
+    print(f"MA window: {MA_WINDOW} | low mean: {train_low.mean():.2f} | high std: {train_high.std():.4f}")
 
     finetune_component("low", train_low, CHECKPOINT_LOW)
     finetune_component("high", train_high, CHECKPOINT_HIGH)
