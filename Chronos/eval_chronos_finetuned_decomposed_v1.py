@@ -8,12 +8,15 @@ import torch
 from chronos import ChronosPipeline
 from scipy.stats import pearsonr
 from sklearn.metrics import mean_absolute_percentage_error, mean_squared_error
-MA_WINDOW = 30
+from statsmodels.tsa.statespace.structural import UnobservedComponents
 
 
-def ma_decompose(y: np.ndarray, window: int = MA_WINDOW):
-    low = np.convolve(y, np.ones(window) / window, mode="same").astype(np.float32)
-    high = (y - low).astype(np.float32)
+def kalman_decompose_context(y_context: np.ndarray):
+    """Fit on context only (causal) — no look-ahead leakage."""
+    model  = UnobservedComponents(y_context, level="local linear trend")
+    result = model.fit(disp=False)
+    low  = np.asarray(result.level.filtered, dtype=np.float32)
+    high = (y_context - low).astype(np.float32)
     return low, high
 
 logging.basicConfig(
@@ -67,7 +70,7 @@ def predict_median(pipeline: ChronosPipeline, context_1d: np.ndarray, horizon: i
 
 
 def generate_plots(
-    y, y_low, y_high, rmse_list, mape_list, pearson_list, directional_hits, dir_acc_list,
+    y, rmse_list, mape_list, pearson_list, directional_hits, dir_acc_list,
     context_window, forecast_horizon, step_size, num_segments,
     test_df, chronos_low, chronos_high, device, script_dir,
 ):
@@ -126,8 +129,7 @@ def generate_plots(
         if end_ctx + forecast_horizon > len(y):
             break
         mid_offset = forecast_horizon // 2
-        ctx_low  = y_low[start_ctx:end_ctx].copy()
-        ctx_high = y_high[start_ctx:end_ctx].copy()
+        ctx_low, ctx_high = kalman_decompose_context(y[start_ctx:end_ctx])
         fl = predict_median(chronos_low,  ctx_low,  forecast_horizon)
         fh = predict_median(chronos_high, ctx_high, forecast_horizon)
         combined = fl + fh
@@ -209,8 +211,9 @@ def generate_plots(
 
     # --- 7. Box plot: Low vs High raw forecast ranges (1st segment sanity check) ---
     fig, ax = plt.subplots(figsize=(8, 5))
-    ctx_t_low  = torch.tensor(y_low[:context_window].copy(),  dtype=torch.float32)
-    ctx_t_high = torch.tensor(y_high[:context_window].copy(), dtype=torch.float32)
+    seg0_low, seg0_high = kalman_decompose_context(y[:context_window])
+    ctx_t_low  = torch.tensor(seg0_low,  dtype=torch.float32)
+    ctx_t_high = torch.tensor(seg0_high, dtype=torch.float32)
     with torch.no_grad():
         samples_low = chronos_low.predict(ctx_t_low, prediction_length=forecast_horizon,
                                           num_samples=20).squeeze(0).cpu().numpy()
@@ -283,8 +286,6 @@ def main():
         num_segments = (total_samples - context_window) // step_size
         logging.info(f"Segments to evaluate: {num_segments}")
 
-        y_low, y_high = ma_decompose(y)
-        logging.info(f"MA filter applied (window={MA_WINDOW})")
 
         # ========================
         # 3) Load two fine-tuned Chronos models (low-pass / high-pass)
@@ -311,14 +312,13 @@ def main():
             if end_context + forecast_horizon > total_samples:
                 break
 
-            y_true = y[end_context : end_context + forecast_horizon]
+            y_context = y[start_context:end_context]
+            y_true    = y[end_context : end_context + forecast_horizon]
 
-            # Use pre-filtered MA components (matches ChronosBase_Filtering.ipynb approach)
-            context_low  = torch.tensor(y_low[start_context:end_context].copy(),  dtype=torch.float32)
-            context_high = torch.tensor(y_high[start_context:end_context].copy(), dtype=torch.float32)
+            context_low, context_high = kalman_decompose_context(y_context)
 
-            forecast_low  = predict_median(chronos_low,  context_low.numpy(),  forecast_horizon)
-            forecast_high = predict_median(chronos_high, context_high.numpy(), forecast_horizon)
+            forecast_low  = predict_median(chronos_low,  context_low,  forecast_horizon)
+            forecast_high = predict_median(chronos_high, context_high, forecast_horizon)
             combined_pred = forecast_low + forecast_high
 
             prev_anchor = np.concatenate([[y[end_context - 1]], y_true[:-1]])
@@ -355,7 +355,7 @@ def main():
             directional_hits=np.array(directional_hits),
             context_window=context_window,
             forecast_horizon=forecast_horizon,
-            ma_window=MA_WINDOW,
+            filter="kalman",
             num_segments=num_segments,
         )
         logging.info("Results saved to Chronos_SSMI_FineTuned_Decomposed_v1_Metrics.npz")
@@ -375,8 +375,6 @@ def main():
 
         generate_plots(
             y=y,
-            y_low=y_low,
-            y_high=y_high,
             rmse_list=rmse_list,
             mape_list=mape_list,
             pearson_list=pearson_list,

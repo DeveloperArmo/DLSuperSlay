@@ -22,10 +22,10 @@ BASE_MODEL_ID  = "amazon/chronos-t5-base"
 CKPT_LOW       = SCRIPT_DIR / "chronos_ssmi_low_v1.pt"
 CKPT_HIGH      = SCRIPT_DIR / "chronos_ssmi_high_v1.pt"
 TEST_START     = "2018-01-01"
-CONTEXT_WINDOW = 180
-HORIZON        = 15
+CONTEXT_WINDOW = 120
+HORIZON        = 30
 STEP           = 30
-MA_WINDOW      = 60
+MA_WINDOW      = 30
 
 COLORS = {
     "Baseline":       "#4C72B0",
