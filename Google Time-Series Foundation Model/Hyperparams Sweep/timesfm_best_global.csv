@@ -1,0 +1,5 @@
+metric,filter,config_id,config,metric_value
+rmse,Moving Average,2,{'window': 30},124.44592181840713
+mape,Kalman Filter,3,{'process_noise': 0.1},1.6709657951788395
+pearson_r2,Kalman Filter,1,{'process_noise': 0.001},0.4089884203876601
+directional_accuracy,Moving Average,3,{'window': 60},51.80722891566265
