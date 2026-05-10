@@ -18,6 +18,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import torch
+from statsmodels.tsa.filters.hp_filter import hpfilter
 from torch.utils.data import DataLoader, Dataset
 
 from chronos import ChronosPipeline
@@ -30,8 +31,8 @@ TRAIN_END_DATE = "2017-12-31"
 
 BASE_MODEL_ID = "amazon/chronos-t5-base"
 
-CONTEXT_LEN = 120
-HORIZON = 30
+CONTEXT_LEN = 180
+HORIZON = 15
 STRIDE = 30
 
 BATCH_SIZE = 8
@@ -40,7 +41,6 @@ WEIGHT_DECAY = 0.01
 MAX_EPOCHS = 3
 SEED = 42
 VAL_FRACTION = 0.10
-MA_WINDOW = 30
 
 CHECKPOINT_LOW = SCRIPT_DIR / "chronos_ssmi_low_v1.pt"
 CHECKPOINT_HIGH = SCRIPT_DIR / "chronos_ssmi_high_v1.pt"
@@ -102,9 +102,13 @@ def load_train_series() -> np.ndarray:
     return y
 
 
-def ma_decompose(series: np.ndarray, window: int = MA_WINDOW):
-    low = np.convolve(series, np.ones(window) / window, mode="same").astype(np.float32)
-    high = (series - low).astype(np.float32)
+HP_LAMBDA = 10000
+
+
+def hp_decompose(series: np.ndarray):
+    cycle, trend = hpfilter(series, lamb=HP_LAMBDA)
+    low  = np.asarray(trend, dtype=np.float32)
+    high = np.asarray(cycle, dtype=np.float32)
     return low, high
 
 
@@ -225,8 +229,7 @@ def main() -> None:
     print(f"High checkpoint: {CHECKPOINT_HIGH}")
 
     y = load_train_series()
-    train_low, train_high = ma_decompose(y)
-    print(f"MA window: {MA_WINDOW} | low mean: {train_low.mean():.2f} | high std: {train_high.std():.4f}")
+    train_low, train_high = hp_decompose(y)
 
     finetune_component("low", train_low, CHECKPOINT_LOW)
     finetune_component("high", train_high, CHECKPOINT_HIGH)
