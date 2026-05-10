@@ -42,9 +42,9 @@ PROJECT_ROOT = SCRIPT_DIR.parent.parent  # up two levels to project root
 DATA_CSV = PROJECT_ROOT / "DataSets" / "trimmed" / "SSMI.csv"
 TRAIN_END_DATE = "2017-12-31"
 
-CONTEXT_LEN = 120
-MODEL_CTX_LEN = 128
-HORIZON = 30
+CONTEXT_LEN = 180
+MODEL_CTX_LEN = 192
+HORIZON = 15
 STRIDE = 30
 
 PATCH_LEN = 32
