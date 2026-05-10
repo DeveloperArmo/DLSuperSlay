@@ -1,0 +1,17 @@
+filter,metric,best_config_id,best_config,metric_value
+Butterworth,rmse,3,"{'cutoff': 0.2, 'order': 2}",183.6707451164076
+Butterworth,mape,1,"{'cutoff': 0.05, 'order': 2}",2.4813737500545305
+Butterworth,pearson_r2,3,"{'cutoff': 0.2, 'order': 2}",0.2412585193094412
+Butterworth,directional_accuracy,1,"{'cutoff': 0.05, 'order': 2}",50.54886211512718
+HP Filter,rmse,3,{'lambda': 10000},138.8753992107115
+HP Filter,mape,3,{'lambda': 10000},1.93245955144173
+HP Filter,pearson_r2,3,{'lambda': 10000},0.3714050701119451
+HP Filter,directional_accuracy,3,{'lambda': 10000},51.37884872824632
+Kalman Filter,rmse,3,{'process_noise': 0.1},125.98855007738045
+Kalman Filter,mape,3,{'process_noise': 0.1},1.6709657951788395
+Kalman Filter,pearson_r2,1,{'process_noise': 0.001},0.4089884203876601
+Kalman Filter,directional_accuracy,1,{'process_noise': 0.001},51.37884872824632
+Moving Average,rmse,2,{'window': 30},124.44592181840713
+Moving Average,mape,3,{'window': 60},1.71986192786373
+Moving Average,pearson_r2,3,{'window': 60},0.39288292126667607
+Moving Average,directional_accuracy,3,{'window': 60},51.80722891566265
